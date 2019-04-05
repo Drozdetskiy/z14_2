@@ -1,15 +1,14 @@
 from django.conf.urls import url
 from django.urls import path
-from cooking.views import hello_world, \
-    index_view, example_json_response, \
-    view_with_params, example_template, other_example_template
+
+from cooking.views import FeedView, UserFeedView, RecipeView, \
+    CreateRecipeView, RegisterView
 
 urlpatterns = [
-    path('example1', example_template, name='example1'),
-    path('example2', other_example_template, name='example2'),
-    path('hello', hello_world, name='hello.world'),
-    path('', index_view, name='index'),
-    path('json-example', example_json_response, name='json'),
-    path('someasdasasd-uri/<str:user_id>', view_with_params, name='with-params'),
+    path('', FeedView.as_view(), name='feed'),
+    path('my-feed', UserFeedView.as_view(), name='user.feed'),
+    path('recipe/<int:pk>/', RecipeView.as_view(), name='recipe'),
+    path('create', CreateRecipeView.as_view(), name='create'),
+    path('auth/register', RegisterView.as_view(), name='register')
     # url('^other-uri/\d+', view_with_params, name='other-name')
 ]

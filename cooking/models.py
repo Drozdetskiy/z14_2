@@ -8,6 +8,8 @@ from django.db import models
 # class UserInfo(models.Model):
 #     user = models.OneToOneField('auth.User', on_delete=models.CASCADE)
 #     avatar = models.ImageField(blank=True, null=True)
+from django.urls import reverse
+
 
 class User(AbstractUser):
     avatar = models.ImageField(blank=True, null=True)
@@ -28,6 +30,9 @@ class Recipe(models.Model):
 
     def __str__(self):
         return f'{self.author} - {self.title}'
+
+    def get_absolute_url(self):
+        return reverse('recipe', args=(self.pk, ))
 
     class Meta:
         verbose_name = 'Рецепт'

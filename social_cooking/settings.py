@@ -131,6 +131,8 @@ MEDIA_ROOT = 'media'
 
 AUTH_USER_MODEL = 'cooking.User'
 
-LOGIN_REDIRECT_URL = reverse_lazy('index')
-LOGOUT_REDIRECT_URL = reverse_lazy('index')
+LOGIN_REDIRECT_URL = reverse_lazy('feed')
+LOGOUT_REDIRECT_URL = reverse_lazy('feed')
 LOGIN_URL = reverse_lazy('login')
+
+PAGE_SIZE = 3
