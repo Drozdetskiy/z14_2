@@ -151,3 +151,7 @@ LOGOUT_REDIRECT_URL = reverse_lazy('feed')
 LOGIN_URL = reverse_lazy('login')
 
 PAGE_SIZE = 5
+
+
+import django_heroku
+django_heroku.settings(locals())
