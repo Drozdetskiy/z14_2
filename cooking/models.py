@@ -1,6 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 
 # Create your models here.
 
@@ -17,11 +19,12 @@ class User(AbstractUser):
 
 
 class Recipe(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(_('Название'), max_length=100)
     text = models.TextField()
     image = models.ImageField(null=True, blank=True)
     author = models.ForeignKey(
-        get_user_model(), null=True, on_delete=models.SET_NULL
+        get_user_model(), null=True, on_delete=models.SET_NULL,
+        verbose_name= _('Автор')
     )
     level = models.PositiveSmallIntegerField(blank=True, null=True)
 
