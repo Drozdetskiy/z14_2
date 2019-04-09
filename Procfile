@@ -1,1 +1,1 @@
-web:
+web: gunicorn social_cooking.wsgi
